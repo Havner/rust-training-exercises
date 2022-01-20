@@ -93,7 +93,7 @@ impl Objects {
 fn main() {
     let mut o = Objects::new();
     let s = Something("hello world!".to_string());
-    let p = Person{ name: "Jan".to_string(), surname: "Kowalski".to_string(), nickname: None};
+    let p = Person{name: "Jan".to_string(), surname: "Kowalski".to_string(), nickname: None};
     let c1 = Computer::Laptop;
     let c2 = Computer::Other("tablet".to_string());
 

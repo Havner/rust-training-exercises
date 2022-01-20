@@ -7,7 +7,7 @@ fn consume(mut s: String) {
 }
 
 fn borrow(s: &String) {
-    println!("{}", s);
+    println!("{} borrowed", s);
 }
 
 fn borrow_mutable(s: &mut String) {

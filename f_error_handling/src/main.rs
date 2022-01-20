@@ -10,7 +10,6 @@
 use regex::Regex;
 use std::io;
 
-#[derive(Debug)]
 struct Connection {
     pub number: String,
 }
@@ -43,25 +42,14 @@ fn connect(number: &str) -> Result<Option<Connection>, ConnectionError> {
 }
 
 fn call(number: &str) -> Result<Option<Connection>, ConnectionError> {
-    check_format(number)?;
-    connect(number)
+    // implement
+    Err(ConnectionError::WrongNumberFormat)
 }
 
 fn main() {
     println!("What number do you want to call?");
     let mut number = String::new();
     // change behavior from panic! to println! + return
-    match io::stdin().read_line(&mut number) {
-        Ok(n) => println!("Read {} chars", n),
-        Err(err) => {
-            println!("read_line() failed: {:?}", err);
-            return;
-        },
-    };
-    match call(number.trim()) {
-        Ok(Some(c)) => println!("Conn succesfull: {:?}", c),
-        Ok(None) => println!("Nobody answered"),
-        Err(ConnectionError::WrongNumberFormat) => println!("wr format"),
-        Err(ConnectionError::FormatterError) => println!("formatter failed"),
-    };
+    io::stdin().read_line(&mut number).expect("Failed to read from stdin!");
+    call(number.trim()).expect("Failed to call number");
 }
